@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="keywords" content="前端连续，前端教学"/>
+    <meta name="description" content="前端的教学">
+    <meta name="viewport"
+          content="height=device-height,width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Title</title>
+    <link rel="stylesheet" href="index.css" type="text/css">
+    <link rel="preload" href="index.js" as="script" type="text/javascript"/>
+    <link rel="prefetch" href="index.js" as="script" type="text/javascript"/>
+    <link rel="icon" href="favicon.ico" type="image/x-icon"/>
+    <link rel="preconnect" href="https://www.baidu.com"/>
+    <style>
+        table {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+
+        td {
+            border: 1px solid black;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+<article>link 标签的作用</article>
+<div>用来引入外部资源</div>
+<h3>link标签的ref的值</h3>
+<table>
+    <thead>
+    ref的值
+    </thead>
+    <tr>
+        <td>stylesheet</td>
+        <td>用来引入css资源</td>
+    </tr>
+    <tr>
+        <td>icon</td>
+        <td>用来设置网站的icon</td>
+    </tr>
+    <tr>
+        <td>prefetch（面试常问，性能优化相关）</td>
+        <td>在浏览器空闲的时候加载资源，通常是其他页面所需要的关键资源</td>
+    </tr>
+    <tr>
+        <td>preload（面试常问，性能优化相关）</td>
+        <td>当前页面的关键资源,比如vue框架代码，element ui等</td>
+    </tr>
+    <tr>
+        <td>preconnect</td>
+        <td>用来提前解析域名，比如网站引入了一些其他第3方的资源，可以使用这个标签来提前进行域名解析</td>
+    </tr>
+</table>
+<h3>绝对路径和相对路径，比如当前浏览器的路由为 a.com/home</h3>
+<table>
+    <tr>
+        <td>href='about'</td>
+        <td>将直接导航到a.com/home/about</td>
+    </tr>
+    <tr>
+        <td>href='/about'</td>
+        <td>首先获取根路径也就是a.com,然后拼接上路由，最终结果是a.com/about</td>
+    </tr>
+</table>
+<table></table>
+<h3>crossorigin</h3>
+<p>在引入外部资源的时候，可能会存在跨域问题,通常针对img,link,script,video,audio标签</p>
+<table>
+    <tr>
+        <td>不设置值</td>
+        <td>
+            允许资源加载，但是不能操作资源，比如字体，浏览器不会加载字体。图片可以显示图片，但是不能对图片进行访问。视频，不能进行截图
+        </td>
+    </tr>
+    <tr>
+        <td>anonymous</td>
+        <td>允许跨域，不携带凭证，允许操作资源</td>
+    </tr>
+    <tr>
+        <td>use-credentials</td>
+        <td>允许跨域，携带凭证，允许操作资源。比如访问用户私有图片的时候，可以携带凭证，这样判断是否有访问权限</td>
+    </tr>
+    <tr>
+        <td>空字符串</td>
+        <td>anonymous</td>
+    </tr>
+</table>
+<img src="https://ww4.sinaimg.cn/mw690/006jmj7Ygy1hsagl82ykgj30zu25ob05.jpg" alt="">
+<p>允许跨域的时候，浏览器会返回access-control-allow-origin,*表示所有网站都能访问</p>
+
+<h3>script加载</h3>
+<table>
+    <tr>
+        <td>没有添加async或者defer</td>
+        <td>同步加载js,加载完毕后立即执行，会阻塞dom解析</td>
+    </tr>
+    <tr>
+        <td>async</td>
+        <td>异步加载js,加载完毕后立即执行，不能保证脚本的执行顺序。不会阻塞dom解析</td>
+    </tr>
+    <tr>
+        <td>defer</td>
+        <td>异步加载js,加载完毕后按照defer顺序执行，使用于脚本之间有依赖关系</td>
+    </tr>
+    <tr>
+        <td>link,prefetch</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>link,preload</td>
+        <td></td>
+    </tr>
+</table>
+</body>
+</html>

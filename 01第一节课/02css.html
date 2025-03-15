@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .a, .b, .c {
+            width: 100px;
+            height: 100px;
+            border: 1px solid red;
+        }
+
+        .a {
+            position: relative;
+        }
+
+        .b {
+            /*filter:blur(5px);*/
+            transform: translateX(200px);
+        }
+
+        .c {
+            position: fixed;
+            left: 100px;
+            top: 100px;
+        }
+
+    </style>
+</head>
+<body>
+<h3>css权重</h3>
+<p>!important >style > #id > .class > 标签选择器 > 属性选择器</p>
+<h3>文档流</h3>
+块级元素独占一行，行内元素一次排列自动换行，根据这个规程平铺所有元素。当文档中任意元素大小发生变化后，浏览器需要重新计算布局，需要重排和重绘
+<ul>
+    <li>块级元素：可以设置宽高</li>
+    <li>行内元素：不能设置宽高</li>
+    <li>行内块元素，可以设置宽高，一次排列，不会单独占据一行</li>
+</ul>
+<h3>脱离文档流</h3>
+实习方式，float，决定定位，fixed,
+<h3>重绘和重排</h3>
+<p>重排指的是浏览器重新计算页面元素的几何属性（如位置、尺寸等）以及如何在屏幕上布局这些元素。</p>
+<p>
+    重绘指的是当元素的外观发生变化，但这些变化不影响元素的几何属性时，浏览器会重新渲染这些元素。例如，改变元素的背景色、文本颜色或边框颜色等。</p>
+<p>重排一定会重排</p>
+<h3>减少重绘和重排</h3>
+<ul>
+    <li>脱离文档流</li>
+    <li>批量操作</li>
+</ul>
+<table>
+    <tr>
+        <td>display:none</td>
+        <td>不会占据位置，不能响应事件</td>
+    </tr>
+    <tr>
+        <td>visibility: hidden</td>
+        <td>会占据大小，元素不可见，不能响应事件</td>
+    </tr>
+    <tr>
+        <td>opacity:0</td>
+        <td>会占据大小，可以响应事件</td>
+    </tr>
+</table>
+<h3>绝对定位和fixed的起点</h3>
+<p>
+    默认情况下绝对定位是根据最近的具有定位属性的祖先节点，fixed是相对于浏览器定位。但是一些样式会破坏掉这种情况，常见的transform,filter
+</p>
+<div class="a">
+    <div class="b">
+        <div class="c"></div>
+    </div>
+</div>
+<p>盒模型</p>
+<ul>
+    <li>border-box:宽高为整体大小，ie默认</li>
+    <li>padding-box:content+padding大小</li>
+    <li>content-box:内容区域大小，chrome默认</li>
+</ul>
+<h3>BFC（Block Formatting Context，块级格式化上下文）,相邻元素之间如何布局，常用来处理边距重合，父元素坍塌。</h3>
+
+</body>
+</html>
