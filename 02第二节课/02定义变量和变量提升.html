@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h3>js中定义变量的方法</h3>
+var: 存在变量提升，没有块级作用域，存在函数作用域，定义在全局的var，会绑定到window对象上 <br>
+<script>
+    console.log(a)
+    var a = 10;
+    console.log(b)
+    if (false) {
+        var b = 20;
+    }
+
+    function c() {
+        var d = 30;
+    }
+
+    c()
+    console.log(d)
+    console.log(123)
+</script>
+let: 不存在变量提升，有块级作用域，有函数作用域，定义在全局不会绑定到window对象 <br>
+<script>
+    console.log(e)
+    let e = 10;
+    console.log(f)
+    if (false) {
+        let f = 20
+    }
+    console.log(345)
+</script>
+const: 和let一致，但是定义后不可以修改值 <br>
+function: 定义函数,会将整体进行提升,因此可以先调用再声明 <br>
+<script>
+    console.log(g)
+    g()
+    function g() {
+        console.log(123)
+    }
+
+    console.log(h)
+    if (false) {
+        function h() {
+        }
+    }
+</script>
+不使用关键字: 相当于直接绑定在window上。 <br>
+<script>
+    // console.log(i)
+    // i = 10;
+
+    if(true){
+        j=10
+    }
+    console.log(j)
+    function k() {
+        l = 12
+    }
+    k()
+    console.log(l)
+</script>
+</body>
+</html>

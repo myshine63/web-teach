@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h3>1. 基本数据类型 4</h3>
+undefined,null,boolean,string,number,symbol,bigInt <br>
+<h3>2. 引用类型 4</h3>
+Object, Array, Function, Date, RegExp, Map, Set , WeakMap, WeakSet <br>
+<h3>3. 浮点数</h3>
+js中用64位存储所有的number类型，某些十进制小数在二进制中无法精确表示，而0.1和0.2在用64为进行保存时候，实际保存的是近似值。
+所以在相加的时候，会导致误差。解决方法，toFixed 保存近似值
+<script>
+    console.log(0.1 + 0.2 === 0.3)
+</script>
+<h3>4. 判断数据类型的方法 4</h3>
+<ol type="a">
+    <li>
+        typeof, 注意 typeof null === 'object'
+        <script>
+            console.log(typeof null)
+            let a = function () {
+            }
+            console.log(typeof a)
+        </script>
+    </li>
+    <li>
+        instanceof
+    </li>
+    <li>
+        Object.prototype.toString.call()
+    </li>
+    <li>
+        某些数据类型特有的方法，比如 Array.isArray()
+    </li>
+</ol>
+<h3>5. js中判断数据相等的方法 3</h3>
+a."==", 对数据进行转换后再比较 <br>
+<script>
+    console.log(0 == '0') // true
+    console.log(0 == false) //true
+    console.log(false == '0') // true
+    console.log('' == false) // true
+    console.log('0' == '') // false
+    console.log('0' == 0) // true
+    console.log(false == 'false') //false
+</script>
+b. "===", 绝对相等，不做类型转换 <br>
+<script>
+    console.log(NaN === NaN) // false
+    console.log(+0 === -0) // true
+</script>
+c. Object.is(),绝对相等，不做类型转换 <br>
+<script>
+    console.log(Object.is(NaN, NaN)) // true
+    console.log(Object.is(+0, -1)) // false
+</script>
+<h3>6. 基本类型和引用类型区别 3</h3>
+1. 存储位置区别，基本类型是存储在栈上，访问速度快，引用类型存储在堆上，访问速度比基本类型慢。
+2. 基本类型变量保存的是值，直接做比较的时候，是比较值。引入类型变量保存的是地址，直接比较的时候比较的是地址。
+<script>
+    let a = 1;
+    let b = a;
+    a = 3;
+    console.log(a === b)
+    let c = {}
+    let d = c
+    c.name = 'jerry';
+    console.log(c === d)
+</script>
+</body>
+</html>
