@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+1. js最顶层的原型是Object.prototyoe <br>
+<script>
+    console.log(Object.prototyoe)
+</script>
+2. 当我们创建一个对象，引用类型数据的时候，这个对象都会有一个__proro__属性，它的值我们成为对象的原型对象。 <br>
+3. 当我们用构造函数F创建一个对象的时候f，f.__proto__ === F.prototype <br>
+<script>
+    function F() {
+    }
+
+    let f = new F();
+    console.log(f.__proto__ === F.prototype, 123)
+    console.log(f instanceof F)
+
+</script>
+4. 每个原型对象都会有个constructor属性，它执行该构造函数 <br>
+<script>
+    console.log(F.prototype.constructor === F, 456)
+</script>
+5. 当我们访问对象的属性和方法的时候，先去对象自身进行寻找，如果没有在顺着原型链去寻找。一直到顶层的Object.prototype ===
+F.prototype <br>
+<script>
+    function H() {
+        this.name = 'tom' // 私有属性
+        this.say = function () { // 私有方法
+            console.log(this.name)
+        }
+    }
+
+    H.prototype.age = 12; // 共有属性
+    H.prototype.sayAge = function () { // 共有方法
+        console.log(this.age)
+    }
+    let h = new H();
+    console.log(h.name)
+    console.log(h.age)
+    h.say()
+    h.sayAge()
+
+    for (let key in h) {
+        console.log(h[key])
+    }
+
+    Object.keys(h).forEach(function (key) {
+        console.log(h[key])
+    })
+</script>
+</body>
+</html>
