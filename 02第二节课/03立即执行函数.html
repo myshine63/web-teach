@@ -5,39 +5,52 @@
     <title>Title</title>
 </head>
 <body>
-<h3>立即执行函数好处</h3>
+<h3>立即执行函数好处 3分</h3>
 1. 避免全局变量污染 <br>
 2. 避免变量冲突(在多个js脚本中) <br>
 3. 可以用来解决变量提升的问题 <br>
 4. 初始化代码 <br>
 <script>
     (function () {
-        console.log(456)
+        var a = 123
+        console.log(a)
     }());
     (function () {
         console.log(123)
     })(1);
 
+    // 面试长考的 4
+    // window.i = 0
     for (var i = 0; i < 3; i++) {
         setTimeout(() => {
-            console.log(i)
+            console.log(window.i) // 只打印3
         })
     }
-    console.log(window.i)
+
+
     for (let i = 0; i < 3; i++) {
         setTimeout(() => {
             console.log(i)
         })
     }
+
+    // 函数传参是值传递
     for (var i = 0; i < 3; i++) {
         (function (a) {
             setTimeout(() => {
                 console.log(a)
             })
-        })(i)
+        })(window.i)
     }
+    var a  = 123
+    function  say(){
 
+    }
 </script>
 
+<script src="../index.js"></script>
+<script>
+    say();
+</script>
 </body>
 </html>

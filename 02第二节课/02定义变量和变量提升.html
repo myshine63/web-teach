@@ -6,13 +6,15 @@
 </head>
 <body>
 <h3>js中定义变量的方法</h3>
-var: 存在变量提升，没有块级作用域，存在函数作用域，定义在全局的var，会绑定到window对象上 <br>
+var: 存在变量提升，重复定义，没有块级作用域，存在函数作用域，定义在全局的var，会绑定到window对象上 <br>
+js中创建作用域: 1. 块级作用域 2. 函数作用域 3，全局作用域（window）4.script作用域
 <script>
     console.log(a)
     var a = 10;
-    console.log(b)
+
+    console.log(b) // 直接报错
     if (false) {
-        var b = 20;
+        let b = 20;
     }
 
     function c() {
@@ -32,12 +34,14 @@ let: 不存在变量提升，有块级作用域，有函数作用域，定义在
         let f = 20
     }
     console.log(345)
+    console.log(hello)
 </script>
 const: 和let一致，但是定义后不可以修改值 <br>
 function: 定义函数,会将整体进行提升,因此可以先调用再声明 <br>
 <script>
     console.log(g)
     g()
+
     function g() {
         console.log(123)
     }
@@ -47,21 +51,40 @@ function: 定义函数,会将整体进行提升,因此可以先调用再声明 <
         function h() {
         }
     }
+    let hello = 123
 </script>
-不使用关键字: 相当于直接绑定在window上。 <br>
+
+
+不使用关键字: 相当于直接绑定在window上。没有变量提升。只要执行后，就会绑定到window. <br>
 <script>
-    // console.log(i)
+
+    // console.log(i) // 直接报错
     // i = 10;
 
-    if(true){
-        j=10
-    }
-    console.log(j)
+    // if (false) {
+    //     j = 10
+    // }
+    // console.log(j)
+
     function k() {
-        l = 12
+        var aaa;
+        console.log(aaa)
+        aaa = 10
+        window.l = 12
     }
     k()
-    console.log(l)
+    console.log(window.l)
+    console.log(window.aaa)
+  // 全局作用域 ， 函数作用域。 变量提升，是提升到当前的作用域顶部
+  //   { c: 13
+  //       { b:12
+  //           {
+  //               a: 10
+  //           }
+  //       }
+  //   }
+    console.log(hello)
+
 </script>
 </body>
 </html>

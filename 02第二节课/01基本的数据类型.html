@@ -6,31 +6,42 @@
 </head>
 <body>
 <h3>1. 基本数据类型 4</h3>
-undefined,null,boolean,string,number,symbol,bigInt <br>
+undefined, null, boolean, string, number, symbol, bigInt <br>
 <h3>2. 引用类型 4</h3>
-Object, Array, Function, Date, RegExp, Map, Set , WeakMap, WeakSet <br>
+Object, Array, Function, Date, RegExp, Map, Set , WeakMap, WeakSet （看一下阮一峰的es6,看它和Set和Map 面试加分项） <br>
 <h3>3. 浮点数</h3>
-js中用64位存储所有的number类型，某些十进制小数在二进制中无法精确表示，而0.1和0.2在用64为进行保存时候，实际保存的是近似值。
+js中用64位存储所有的number类型，会有最大值和最小值。 某些十进制小数在二进制中无法精确表示，而0.1和0.2在用64为进行保存时候，实际保存的是近似值。
 所以在相加的时候，会导致误差。解决方法，toFixed 保存近似值
 <script>
     console.log(0.1 + 0.2 === 0.3)
+    console.log((0.1 + 0.2).toFixed(2) === (0.3).toFixed(2))
 </script>
 <h3>4. 判断数据类型的方法 4</h3>
 <ol type="a">
     <li>
-        typeof, 注意 typeof null === 'object'
+        typeof, 注意 typeof null === 'object' 用来判断基本类型，加上函数
         <script>
-            console.log(typeof null)
+            console.log(typeof 1) // number
+            console.log(typeof null) // object,js遗留的问题
+            console.log(typeof {}) // object
+            console.log(typeof []) // object
             let a = function () {
             }
             console.log(typeof a)
         </script>
     </li>
     <li>
-        instanceof
+        instanceof 通常是用来判断对象。 a instanceof b, 判断b.prototype 有没有在a原型链上
     </li>
     <li>
-        Object.prototype.toString.call()
+        Object.prototype.toString.call() 这个方法最准确
+        <script>
+            console.log(Object.prototype.toString.call('a')) // "[object String]"
+            console.log(Object.prototype.toString.call([]))  // "[object Array]"
+            console.log(Object.prototype.toString.call(a)) // "[object Function]"
+            console.log(Object.prototype.toString.call(null)) // "[object Null]"
+            console.log(Object.prototype.toString.call(new Set()))
+        </script>
     </li>
     <li>
         某些数据类型特有的方法，比如 Array.isArray()
@@ -39,24 +50,33 @@ js中用64位存储所有的number类型，某些十进制小数在二进制中�
 <h3>5. js中判断数据相等的方法 3</h3>
 a."==", 对数据进行转换后再比较 <br>
 <script>
+    // a == b, b == c, a == c 注意
+
     console.log(0 == '0') // true
     console.log(0 == false) //true
+
+    // 特例
     console.log(false == '0') // true
     console.log('' == false) // true
     console.log('0' == '') // false
+
     console.log('0' == 0) // true
     console.log(false == 'false') //false
 </script>
+
 b. "===", 绝对相等，不做类型转换 <br>
 <script>
     console.log(NaN === NaN) // false
     console.log(+0 === -0) // true
 </script>
+
 c. Object.is(),绝对相等，不做类型转换 <br>
 <script>
     console.log(Object.is(NaN, NaN)) // true
-    console.log(Object.is(+0, -1)) // false
+    console.log(Object.is(+0, -0)) // false
 </script>
+
+
 <h3>6. 基本类型和引用类型区别 3</h3>
 1. 存储位置区别，基本类型是存储在栈上，访问速度快，引用类型存储在堆上，访问速度比基本类型慢。
 2. 基本类型变量保存的是值，直接做比较的时候，是比较值。引入类型变量保存的是地址，直接比较的时候比较的是地址。
@@ -64,11 +84,13 @@ c. Object.is(),绝对相等，不做类型转换 <br>
     let a = 1;
     let b = a;
     a = 3;
-    console.log(a === b)
+    console.log(a === b) // false
+
     let c = {}
     let d = c
     c.name = 'jerry';
-    console.log(c === d)
+
+    console.log(c === d) // true
 </script>
 </body>
 </html>

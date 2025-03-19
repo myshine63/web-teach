@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+// 两个script共享全局作用域window
+<script>
+  setTimeout(() => {
+    console.log(a)//  === console.log(window.a))
+  },100)
+  // console.log(b)
+</script>
+<script>
+
+  var a = 123
+  var b = 456
+</script>
+</body>
+</html>
