@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //箭头函数没有自己this,箭头函数中的this指向的是创建该箭头函数时的环境变量。因此不可以用new去生成对象
+    //在顶层定义的箭头函数,函数体内的this指的是window。
+    //不可以通过apply,call,bind,去改变箭头函数中this的指向
+
+    window.name = "window"
+    let F = (name) => {
+        this.name = name;
+        this.say = function () {
+            console.log(this.name, 'fff')
+        }
+        console.log(this.name,'ddd');
+    };
+    try {
+        let f = new F("spike");
+        console.log(f.name)
+    } catch (e) {
+        console.log(e)
+    }
+    console.log(window.name, 1); // window 1
+    F('jerry');
+    console.log(window.name, 2); // jerry 2
+    window.say(); // jerry fff
+    window.say.call({name: 'tom'}); // tom fff
+    F.call({name: 'tony'}, 'marry') // marry ddd
+    window.say(); // marry fff
+</script>
+</body>
+</html>

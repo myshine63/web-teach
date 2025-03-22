@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 普通函数被调用的时候，会创建新的作用域，并且将作用域中的this指向调用者. 因此只有在被调用的时候，才能明确this指向的谁
+    // 如果没有调用者，this指向window
+    // 使用new 关键字的时候，构造函数作用域内部的this会执行构造的对象
+    window.name = 'window'
+
+    /*普通函数中的this,谁调用它,它就代表谁*/
+    function F(name) {
+        this.name = name;
+        this.info = function () {
+            console.log(this.name, 1);
+        };
+
+        function f1() {
+            console.log(this.name, 2);
+        }
+
+        f1(); // 直接调用,调用者默认为window。this指向window
+        f1.call(this);// 0, 调用者为this,这里的this是这对象实例,因此这里的函数内的this也是对象实例
+    }
+
+    let tom = new F("tom");// window , tom
+    console.log(tom, 3)
+
+    tom.info();//obj,调用对象的info方法,调用者为a实例
+    tom.info.call();//window,调用a实例的info方法,没有调用者默认为window,因此函数内的this指window
+    //当直接调用类函数时,函数中的this全部都指window
+    F("jerry");//jerry, jerry,相当于修改了window.name的值
+    console.log(window.name, 4); // jerry
+</script>
+</body>
+</html>
