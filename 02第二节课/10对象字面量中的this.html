@@ -7,7 +7,7 @@
 <body>
 <script>
     // 对象字面量中的箭头函数指向创建该对象时的运行环境中的this
-    window.name = 'spike';
+       window.name = 'spike';
 
     let obj = {
         name: "tom",
@@ -17,15 +17,12 @@
         f2: () => {
             console.log(this.name)
         },
-        f3() {
-            console.log(this.name)
-        }
     };
-    // obj.f1(); // tom
-    // obj.f2(); // spike
-    // obj.f3(); // tom
+    obj.f1(); // tom
+    obj.f2(); // spike
 
     function F(name) {
+        // this === window
         this.name = name;
         let obj = {
             name: "tom",
@@ -35,19 +32,13 @@
             f2: () => {
                 console.log(this.name)
             },
-            f3() {
-                console.log(this.name)
-            }
         };
         obj.f1(); // tom
         obj.f2(); // jerry
-        obj.f3(); // tom
         obj.f1.call(window); // spike
         obj.f2.call(window); // jerry
-        obj.f3.call(window); // spike
         obj.f1.call(this); // jerry
         obj.f2.call(this); // jerry
-        obj.f3.call(this); // jerry
     }
 
     let f = new F('jerry');
