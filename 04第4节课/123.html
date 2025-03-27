@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let pro = new Promise(resolve => {
+        setTimeout(resolve, 1000);
+    })
+    console.log(Promise.resolve(pro) === pro)
+    async function f1() {
+        return pro
+    }
+
+    let a = f1()
+    console.log(pro === a, 1111)
+
+    console.log(a instanceof Promise)
+</script>
+</body>
+</html>

@@ -35,7 +35,7 @@ console.log(Object.prototype.toString.call(mapEntries)) // [object Map Iterator]
 console.log(Array.isArray(mapEntries))
 
 
-// 区别Object.keys, Object.values, Object.entries，他们返回的是真实的数组
+// 区别Object.keys, Object.values, Object.entries，他们返回的是真实的数组，只能用于数组和对象。
 console.log('Object-User'.padEnd(50, '-'))
 let user = {name: 'tom'};
 let userEntries = Object.entries(user)

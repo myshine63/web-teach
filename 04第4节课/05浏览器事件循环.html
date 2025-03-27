@@ -20,19 +20,24 @@
 12. 当前宏任务执行完毕后，会接着清空微任务队列 <br>
 13. 浏览器根据页面变化选择是否更新页面 <br>
 14. 重复7，并开始依次循环 <br>
+// 常见的微任务: promise,fetch,xhr, async await
+// 宏任务 定时器，messagechannel,事件, 一个script
+// 微任务队列[],
+// 宏任务队列[,k]
 
+课后作业：将事件循环机制写来，再完善，背熟
 <div id="a"></div>
 </body>
 <script>
-    // 同步任务 start 2 4 7 11 13
+    // 同步任务 start,1,2,4,7,11
     // 微任务
-    // 宏任务  12 6 9
-    // 1s 14
-    // start 2 4 7 11 13 1 5 3 8 10 12 6 9 14
+    // 宏任务
+    // 1s
+    // 最终结果: start,1,2,4,7,11,13,5,3 8,10,15,12,6,9,14
     console.log('start')
-    Promise.resolve().then(function () {
+    new Promise(function (resolve, reject) {
         console.log(1)
-    })
+    });
     console.log(2)
     setTimeout(function () {
         console.log(3)
@@ -72,6 +77,6 @@
     setTimeout(function () {
         console.log(14)
     }, 1000)
-
+    // start 2 4 7 11 13 1 5 3 8 10 12 6 9 14
 </script>
 </html>
