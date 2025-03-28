@@ -16,7 +16,7 @@ let f = () => console.log('f')
 
 console.log('start')
 
-new Promise(resolve => {
+let pro = new Promise(resolve => {
     console.log('promise')
     resolve()
 }).then(d).then(e).then(f)
@@ -26,4 +26,7 @@ console.log('aaaaa')
 f1()
 
 console.log('ddddd')
+pro.then(v => console.log('g'))
+pro.then(v => console.log('h'))
+pro.then(v => console.log('i'))
 // start promise aaaaa f1 a ddddd d b e c f
