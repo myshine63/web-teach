@@ -21,8 +21,14 @@ let pro = new Promise(resolve => {
     resolve()
 }).then(d).then(e).then(f)
 
+let pro2 = new Promise(resolve => {
+    console.log('pro2')
+    resolve()
+})
 console.log('aaaaa')
-
+pro2.then(() => console.log('k'))
+pro2.then(d => console.log('l'))
+pro2.then(d => console.log('m'))
 f1()
 
 console.log('ddddd')
