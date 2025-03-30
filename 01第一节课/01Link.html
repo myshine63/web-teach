@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" href="index.css" type="text/css">
-    <link rel="preload" href="index.js" as="script" type="text/javascript"/>
+    <link rel="preload" href="a.js" as="script" type="text/javascript"/>
     <link rel="prefetch" href="/index.js" as="script" type="text/javascript"/>
     <link rel="icon" href="favicon.ico" type="image/x-icon"/>
     <link rel="preconnect" href="https://www.baidu.com"/>
@@ -21,6 +21,12 @@
     </style>
 </head>
 <body>
+<script src="a.js" defer></script>
+<script src="b.js" defer></script>
+
+
+<script src="c.js" async></script>
+<script src="d.js" async></script>
 <article>link 标签的作用</article>
 <div>用来引入外部资源</div>
 <h3>link标签的ref的值</h3>
