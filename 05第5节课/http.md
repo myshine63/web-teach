@@ -24,6 +24,7 @@
 - 501:服务器不支持请求的功能，无法完成请求,比如请求方式发生错误
 - 502:作为网关或者代理工作的服务器尝试执行请求时，从远程服务器接收到了一个无效的响应
 - 503:由于超载或系统维护，服务器暂时的无法处理客户端的请求。延时的长度可包含在服务器的Retry-After头信息中
+### [状态码](https://www.runoob.com/http/http-status-codes.html)
 
 # 浏览器缓存(都收到同源政策影响)
 
@@ -32,6 +33,7 @@
     - 存储大小:约为5M，不同浏览器不一样
 - sessionStorage
     - 关闭浏览器标签，或者关闭浏览器都会失效，打开新的标签页，依然不可以访问
+    - 通常通过sessionId去访问数据。
     - 刷新页面，或者在同标签前进后退，依然存在
     - 存储大小:约为5M，不同浏览器不一样
 - indexDB
@@ -47,26 +49,53 @@
 - post请求（非幂等）
     - 请求数据放在body中
     - 支持多种数据类型
+    - htpps://example.com/create-user。后台数据库表里，会新增一条user数据
 - put（幂等）
-    - 需要发送完整的资源数据
+    - 需要发送完整的资源数据，htpps://example.com/create-user/userid,
 - patch
-    - 用于部分更新资源
+    - 用于部分更新资源,htpps://example.com/create-user/userid,
     - 只需发送需要修改的字段，而不是整个资源
 - delete（幂等）
     - 用于删除资源
 - head
     - 不返回响应体，只返回响应头
-- options 预检请求
-    - 有的时候发现请求发送了两次，第一次是预检请求，第二次才是真实请求
+- [options 预检请求](https://juejin.cn/post/6844903765363916814);
+    - 有的时候发现请求发送了两次，第一次是预检请求，第二次才是真实请求。
     - 检查跨域请求时服务器是否允许某些请求方式
 - [http请求方式](https://juejin.cn/post/7331657679012806706?searchId=2025033017504244F83F2C1D6C7D2AF947)
 - [get和post请求区别](https://juejin.cn/post/6844903433674178574?searchId=20250330175435DF07A51B0CA3552B570C), 必须要懂
 
 # 跨域
+
 - 跨域是浏览器的行为，可以通过禁止浏览器的跨域检测。
 - 同源政策
-  - 协议相同，http和https不是同一种协议
-  - ip相同
-  - 端口相同
+    - 协议相同，http和https不是同一种协议
+    - ip相同
+    - 端口相同
 - 解决跨域的方式
-  - jsonp
+    - jsonp,通过创建一个script标签，src=请求的地址？callback=回调方法。（生成环境）
+    - 通过代理服务器(开发环境)
+    - access-control-allow-origin:* （开发环境）
+
+# cookie和token
+
+[cookie和token](https://juejin.cn/post/6844904034181070861?searchId=2025033019314985CA56999F58DBC58803);
+
+# 浏览器缓存
+
+- [浏览器缓存机制](https://juejin.cn/post/6844903593275817998)
+
+# 浏览器安全
+
+- [csrf](https://juejin.cn/post/6844903689702866952)
+- [xss](https://juejin.cn/post/6844903685122703367)
+
+# tcp握手
+
+- [3次握手和4次挥手](https://blog.csdn.net/whuslei/article/details/6667471)
+
+# http协议版本之间差异
+
+- [http,http1.1,http2.0](https://juejin.cn/post/6844903489596833800?searchId=2025031313392774026AEED3D432655FB4)
+
+# [axios](https://github.com/axios/axios)

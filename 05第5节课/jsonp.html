@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 请求用户信息，请求到了之后，打印用户信息。
+    // 定义一个打印用户信息的方法
+    // 创建一个script标签。src=请求的url?callback=FnName
+  function logUserInfo(data) {
+    console.log(data)
+  }
+  var script = document.createElement("script");
+  script.src = "http://example.com/api?callback=logUserInfo";
+  document.body.appendChild(script);
+</script>
+<script src="http://example.com/api?callback=logUserInfo" crossorigin="anonymous">
+  let userData={
+    name:'tom',
+    age:18,
+  }
+  logUserInfo(userData)
+</script>
+</body>
+</html>

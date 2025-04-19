@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+1. 共享文档：
+2. 第一次请求，后台在响应头里面添加last-modified: 时间戳。
+3. 第二次哦请求的时候，前端在响应头里面，添加这个时间戳。
+<script>dayjs().format()</script>
+<div id="app">{{ message }}</div>
+
+<script>
+    const { createApp, ref } = Vue
+
+    createApp({
+        setup() {
+            const message = ref('Hello vue!')
+            return {
+                message
+            }
+        }
+    }).mount('#app')
+</script>
+</body>
+</html>

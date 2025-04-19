@@ -12,19 +12,19 @@
 <body>
 
 
-<h3>script加载</h3>
+<h3>script下载</h3>
 <table>
     <tr>
         <td>没有添加async或者defer</td>
-        <td>同步加载js,加载完毕后立即执行，会阻塞dom解析</td>
+        <td>同步下载js,下载完毕后立即执行，会阻塞dom解析</td>
     </tr>
     <tr>
         <td>async</td>
-        <td>异步加载js,加载完毕后立即执行，不能保证脚本的执行顺序。不会阻塞dom解析</td>
+        <td>异步下载js,下载完毕后立即执行，不能保证脚本的执行顺序。在下载期间不会阻塞文档解析，执行期间会阻塞</td>
     </tr>
     <tr>
         <td>defer</td>
-        <td>异步加载js,加载完毕后按照defer顺序执行，使用于脚本之间有依赖关系</td>
+        <td>异步下载js,文档解析后，执行。下载完毕后按照defer顺序执行，使用于脚本之间有依赖关系</td>
     </tr>
     <tr>
         <td>link,prefetch</td>

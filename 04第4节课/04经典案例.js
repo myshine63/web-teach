@@ -1,4 +1,9 @@
-let a = () => console.log('a')
+let a = () => {
+    return new Promise(resolve => {
+        console.log('a')
+        resolve()
+    })
+}
 let b = () => console.log('b')
 let c = () => console.log('c')
 
