@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" href="index.css" type="text/css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon"/>
     <link rel="preload" href="a.js" as="script" type="text/javascript"/>
     <link rel="prefetch" href="/index.js" as="script" type="text/javascript"/>
-    <link rel="icon" href="favicon.ico" type="image/x-icon"/>
     <link rel="preconnect" href="https://www.baidu.com"/>
     <style>
         table {
@@ -21,10 +21,12 @@
     </style>
 </head>
 <body>
+<script>
+    console.log(11111)
+</script>
+<script src="./index.js"></script>
 <script src="a.js" defer></script>
 <script src="b.js" defer></script>
-
-
 <script src="c.js" async></script>
 <script src="d.js" async></script>
 <article>link 标签的作用</article>
@@ -48,7 +50,7 @@
     </tr>
     <tr>
         <td>preload（面试常问，性能优化相关）</td>
-        <td>当前页面的关键资源,比如vue框架代码，element ui等</td>
+        <td>当前页面的关键资源,比如vue框架代码，element ui等,index.js</td>
     </tr>
     <tr>
         <td>preconnect</td>
@@ -58,7 +60,15 @@
 <h3>绝对路径和相对路径，比如当前浏览器的路由为 a.com/home/about</h3>
 <table>
     <tr>
-        <td>href='about'</td>
+        <td>
+            http://localhost:63342/web-teach/01%E7%AC%AC%E4%B8%80%E8%8A%82%E8%AF%BE/01Link.html?_ijt=sbst1oim25qfd63snmqrc6jdrn&_ij_reload=RELOAD_ON_SAVE
+            <a href="about">about</a>
+            http://localhost:63342/web-teach/01%E7%AC%AC%E4%B8%80%E8%8A%82%E8%AF%BE/about
+            <a href="./about">./about</a>
+            http://localhost:63342/web-teach/01%E7%AC%AC%E4%B8%80%E8%8A%82%E8%AF%BE/about
+            <a href="/about">/about</a>
+            http://localhost:63342/about
+            href='about'</td>
         <td>将直接导航到a.com/home/about</td>
     </tr>
     <tr>
@@ -66,16 +76,16 @@
         <td>首先获取根路径也就是a.com,然后拼接上路由，最终结果是a.com/about</td>
     </tr>
 </table>
+<img src="https://www.baidu.com/iamges/a.png" alt="">
 <table></table>
 <h3>crossorigin</h3>
 <h3>
     同源政策：
 </h3>
-
 <ul>
     <li>协议一致，https,http</li>
-    <li>域名一致a.com,b.com，</li>
-    <li>a.com:8080,a.com:443</li>
+    <li>域名一致a.com , b.com，</li>
+    <li>端口: a.com:8080,a.com:443</li>
 </ul>
 <p>在引入外部资源的时候，可能会存在跨域问题,通常针对img,link,script,video,audio标签</p>
 <table>
@@ -98,9 +108,10 @@
         <td>anonymous</td>
     </tr>
 </table>
-<img src="https://ww4.sinaimg.cn/mw690/006jmj7Ygy1hsagl82ykgj30zu25ob05.jpg" alt="" crossorigin="anonymous">
+<img src="https://ww4.sinaimg.cn/mw690/006jmj7Ygy1hsagl82ykgj30zu25ob05.jpg" alt="图片加载失败" crossorigin="anonymous">
 <p>允许跨域的时候，浏览器会返回access-control-allow-origin:www.baid.com,,*表示所有网站都能访问</p>
 <img src="htpps/www.baidu.com/a.jpg" alt="">
+https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Attributes/crossorigin
 
 login 页面   home/ a.js.   30M
 </body>

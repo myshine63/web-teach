@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .a {
+            position: relative;
+            width: 1000px;
+            height: 1000px;
+            border: 1px solid red;
+        }
+
+        .b {
+            width: 500px;
+            height: 500px;
+            /*position: absolute;*/
+            /*left: 50%;*/
+            /*top: 50%;*/
+            border: 1px solid green;
+            /*transform: translate(-50%, -50%);*/
+            transform: translate(50%, 50%);
+        }
+
+        .c {
+            width: 200px;
+            height: 200px;
+            position: absolute;
+            left: 50px;
+            top: 50px;
+            border: 1px solid orange;
+        }
+    </style>
+</head>
+<body>
+<div class="a">
+    a
+    <div class="b">b
+        <div class="c">c</div>
+    </div>
+</div>
+<div class="c">c</div>
+</body>
+</html>

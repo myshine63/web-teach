@@ -3,7 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+
     <style>
+        body{
+            width: 100%;
+            height: 100vh;
+        }
         .a, .b, .c {
             width: 100px;
             height: 100px;
@@ -12,7 +17,7 @@
 
         .a {
             position: relative;
-            left:50px
+            left: 50px
         }
 
         .b {
@@ -25,20 +30,36 @@
             left: 100px;
             top: 100px;
         }
-        h3{
-            color: red;
+
+        h3 {
+            color: red !important;
         }
 
+        h3 {
+            color: green;
+        }
 
-        h3{
-            color:green;
+        .d {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .e{
+            position: absolute;
+            left: 50%;
+            right: 50%;
+            transform: translate(-50%, -50%);
         }
     </style>
 </head>
+<div>
+
+</div>
 <body>
 <span>123123</span><span>444444</span>
-<h3>css权重</h3>
-<p>!important > style > #id > .class > 标签选择器 > 属性选择器 (3星)</p>
+<h3 class="aaa">css权重</h3>
+<p>!important > style > #id > .class > 标签选择器 > 属性选择器 (3星) > *</p>
+
 <h3 style="color:red">文档流</h3>
 块级元素独占一行，行内元素一次排列自动换行，根据这个规程平铺所有元素。当文档中任意元素大小发生变化后，浏览器需要重新计算布局，需要重排和重绘
 <ul>
@@ -48,8 +69,8 @@
 </ul>
 <h3>脱离文档流</h3>
 实现方式，float，决定定位，fixed,
-绝对定位的出发点，第一个带有定位属性的祖先元素触发进行计算的。
-fixed:按照
+绝对定位的出发点，第一个带有定位属性的祖先元素进行计算的。
+fixed:按照窗口
 <h3>重绘和重排</h3>
 <p>重排指的是浏览器重新计算页面元素的几何属性（如位置、尺寸等）以及如何在屏幕上布局这些元素。</p>
 <p>
@@ -79,6 +100,8 @@ fixed:按照
 <p>
     默认情况下绝对定位是根据最近的具有定位属性的祖先节点，fixed是相对于浏览器定位。但是一些样式会破坏掉这种情况，常见的transform,filter(面试加分项)
 </p>
+text-align:center;linehight 20px;
+margin: 0 auto; // 左右对齐
 <div class="a">
     a
     <div class="b">
@@ -92,6 +115,6 @@ fixed:按照
     <li>content-box:内容区域大小，chrome默认</li>
 </ul>
 <h3>BFC（Block Formatting Context，块级格式化上下文）,相邻元素之间如何布局，常用来处理边距重合，父元素坍塌。</h3>
-
+像素单位: px; rem(基于html font-size); em:当前元素的font-size,最近的祖先元素的font-size,100vh 100vw;
 </body>
 </html>
