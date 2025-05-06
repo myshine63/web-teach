@@ -10,21 +10,25 @@
 2. 所有的引用类型都是Object的子类 5 <br>
 
 <script>
-    console.log(Object.prototyoe)
-    console.log(Array instanceof Object, 1)
-    console.log(1 instanceof Object, 2)
-    console.log(null instanceof Object, 3)
-    console.log(Number instanceof Object, 4)
-    console.log(typeof Number, 5)
-    console.log(typeof Object, 6)
+    let d = Boolean(123)
+    let a = Number(1);
+    console.log(Object.prototype);
+    console.log(Object.prototype.__proto__,'Object.prototype.__proto__');
+    console.log(Array instanceof Object, 1) //true
+    console.log(1 instanceof Object, 2) // false
+    console.log(null instanceof Object, 3) // false
+    console.log(Number instanceof Object, 4) //true
+    console.log(typeof Number, 5) //'object'
+    console.log(typeof Object, 6) // 'object'
+    console.log(Number(1) instanceof Object, 7); // false
     // String, Object, Array, Date, Set, Map
 </script>
-2. 当我们创建一个对象，引用类型数据的时候，这个对象都会有一个__proro__属性，它的值我们成为对象的原型对象。 <br>
+2. 当我们创建一个对象，引用类型数据的时候，这个对象都会有一个__proto__属性，它的值我们称为改对象的原型对象。 <br>
 3. 当我们用构造函数F创建一个对象的时候f，f.__proto__ === F.prototype <br>
 <script>
     function F() {
     }
-
+    F.prototype
     console.log(F.__proto__ === Function.prototype, 11111111111)
     console.log(Function.prototype.__proto__ === Object.prototype, 222222)
     let f = new F();
@@ -38,7 +42,7 @@
 
 
 </script>
-4. 每个原型对象都会有个constructor属性，它指向该构造函数 <br>
+4. 每个构造函数的prototype都会有个constructor属性，它指向该构造函数 <br>
 <script>
     console.log(F.prototype.constructor === F, 456)
 </script>
@@ -65,10 +69,13 @@ F.prototype <br>
 
     console.log(h.male, 444444)
     console.log(H.male)
+
+
     // 遍历所有的属性，包括继承的。但是不不包括symbol
     for (let key in h) {
         console.log(h[key], key, 1)
     }
+
     // 遍历私有属性
     Object.keys(h).forEach(function (key) {
         console.log(h[key], key, 2)

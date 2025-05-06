@@ -7,14 +7,20 @@
 <body>
 // 两个script共享全局作用域window
 <script>
-  setTimeout(() => {
-    console.log(a)//  === console.log(window.a))
-  },100)
-  // console.log(b)
+    function hello() {
+        console.log('hello')
+    }
 </script>
 <script>
-  var a = 123
-  var b = 456
+
+    let hello = 123
+    console.log(hello);
+
+</script>
+<script>
+    console.log(window.hello, 'window.hello') //
+    hello();
+    console.log(hello)
 </script>
 </body>
 </html>

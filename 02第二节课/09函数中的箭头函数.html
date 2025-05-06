@@ -8,6 +8,7 @@
 <script>
     window.name = 'joker';
     function f(name = 'tom') {
+        // this = jerry
         this.name = name;
         // 常规函数，作为属性方法
         this.fun = function () {
@@ -44,8 +45,6 @@
     f("tom"); // tom obj tom tom tom tom
     window.fun();//tom
     window.func();//tom
-
-
     window.fun.call({name: "spike"});// spike  说明常规方法this指向的是传入对象
     window.func.call({name: "spike"});// tom 不能更改箭头函数中的this。this指向window
     console.log("end");

@@ -37,7 +37,7 @@ let: 不存在变量提升，有块级作用域，有函数作用域，定义在
     console.log(hello)
 </script>
 const: 和let一致，但是定义后不可以修改值 <br>
-function: 定义函数,会将整体进行提升,因此可以先调用再声明 <br>
+function: 定义函数,会将整体进行提升,因此可以先调用再声明,没有块级作用域 <br>
 <script>
     console.log(g)
     g()
@@ -55,7 +55,7 @@ function: 定义函数,会将整体进行提升,因此可以先调用再声明 <
 </script>
 
 
-不使用关键字: 相当于直接绑定在window上。没有变量提升。只要执行后，就会绑定到window. <br>
+不使用关键字: 没有变量提升。只要执行后，就会绑定到window. <br>
 <script>
 
     // console.log(i) // 直接报错
@@ -84,7 +84,7 @@ function: 定义函数,会将整体进行提升,因此可以先调用再声明 <
   //       }
   //   }
     console.log(hello)
-
 </script>
+变量提升，只会提升到当前script的顶部，不跨脚本
 </body>
 </html>

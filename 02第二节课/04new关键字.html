@@ -6,8 +6,8 @@
 </head>
 <body>
 <h3>new关键字做了什么 3</h3>
-new关键字会创建一个对象，然后将函数内部的this指向该对象。如果构造函数返回值是基本类型，或者没有返回值，则返回这个对象。
-如果构造函数返回的是一个引用类型，将不会返回这个对象，
+new关键字会创建一个对象obj，然后将函数内部的this指向该对象。如果构造函数返回值是基本类型，或者没有返回值，则返回obj。
+如果构造函数返回的是一个引用类型obj2，将不会返回这个对象，而是返回obj2
 </body>
 </html>
 <script>
@@ -20,19 +20,24 @@ new关键字会创建一个对象，然后将函数内部的this指向该对象�
     let a = new F('tom');//通过new执行，则返回对象a:{name:'tom'}
 
     console.log('a', a);//tom
+
+    let b = {age: 123};
+    let c = new F(b);
+    console.log(c, c === b);
+
     // 由于直接执行，那么环境变量为顶层对象，浏览器为window,node中为global,global.name='jerry';
 
-    let b = F('jerry');
-    console.log(b);//jerry
-    console.log(window.name);//jerry
-    // 特例
-    function Test() {
-        this.name = "tom";
-        return {}
-    }
-
-    let c = new Test();
-    console.log(c); //{}
-    console.log(Test())//{}
+    // let b = F('jerry');
+    // console.log(b);//jerry
+    // console.log(window.name);//jerry
+    // // 特例
+    // function Test() {
+    //     this.name = "tom";
+    //     return {}
+    // }
+    //
+    // let c = new Test();
+    // console.log(c); //{}
+    // console.log(Test())//{}
 </script>
 

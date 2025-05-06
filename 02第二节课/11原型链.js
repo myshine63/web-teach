@@ -12,8 +12,7 @@ B.prototype.__proto__ = A.prototype
 
 let b = new B()
 
-function C() {
-}
+function C() {}
 
 C.prototype.__proto__ = B.prototype
 
